@@ -109,6 +109,6 @@ button:focus {
 
   transform: translate(-50%, -30%) rotate(45deg);
 
-  border-top: 5px solid rgb(250, 200, 100);
-  border-left: 5px solid rgb(250, 200, 100);
+  border-top: 5px solid rgb(11, 11, 11);
+  border-left: 5px solid rgb(11, 11, 11);
 }
