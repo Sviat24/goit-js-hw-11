@@ -1,4 +1,4 @@
-import './css/styles.css';
+import '../src/css/styles.css';
 
 import ApiService from './api-service';
 import { getPhotoCard } from './photo-card';
