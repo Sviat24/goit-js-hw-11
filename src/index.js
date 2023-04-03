@@ -94,17 +94,16 @@ function appendImages(data) {
     Notify.success(`Ура! Ми знайшли ${data.totalHits} зображення.`);
   }
 
-  const totalPage = Math.ceil(data.totalHits / 40);
+  const hitsPerPage = 40;
+  const totalPage = Math.ceil(data.totalHits / hitsPerPage);
+
   if (apiService.page > totalPage) {
     onHideLoadMoreBtn();
     Notify.info(`Вітаю! Ви досягли кінця результатів пошуку.`);
-  }
-
-  if (data.totalHits === 0) {
+  } else if (data.totalHits === 0) {
     onHideLoadMoreBtn();
     Notify.info(`На жаль, за вашим запитом нічого не знайдено.`);
   }
-
   lightbox.refresh();
 }
 
