@@ -34,7 +34,7 @@ async function onSearchImages(event) {
 
   if (apiService.query === '') {
     Notify.failure(
-      'Sorry, there are no images matching your search query. Please try again.'
+      'На жаль, немає зображень, що відповідають вашому запиту. Будь ласка, спробуйте ще раз.'
     );
     return;
   }
@@ -53,7 +53,7 @@ async function onSearchImages(event) {
     return array;
   } catch (error) {
     Notify.failure(
-      'Sorry, there are no images matching your search query. Please try again.'
+      'На жаль, немає зображень, що відповідають вашому запиту. Будь ласка, спробуйте ще раз.'
     );
     return error;
   }
@@ -70,7 +70,7 @@ async function onLoadMore() {
     return array;
   } catch (error) {
     Notify.failure(
-      'Sorry, there are no images matching your search query. Please try again.'
+      'На жаль, немає зображень, що відповідають вашому запиту. Будь ласка, спробуйте ще раз.'
     );
     return error;
   }
@@ -85,19 +85,24 @@ function appendImages(data) {
     onHideScrollup();
 
     Notify.failure(
-      'Sorry, there are no images matching your search query. Please try again.'
+      'На жаль, немає зображень, що відповідають вашому запиту. Будь ласка, спробуйте ще раз.'
     );
     return;
   }
 
   if (apiService.page === 2) {
-    Notify.success(`Hooray! We found ${data.totalHits} images.`);
+    Notify.success(`Ура! Ми знайшли ${data.totalHits} зображення.`);
   }
 
-  const totalPage = data.totalHits / 40;
+  const totalPage = Math.ceil(data.totalHits / 40);
   if (apiService.page > totalPage) {
     onHideLoadMoreBtn();
-    Notify.info(`We're sorry, but you've reached the end of search results.`);
+    Notify.info(`На жаль, ви досягли кінця результатів пошуку.`);
+  }
+
+  if (data.totalHits === 0) {
+    onHideLoadMoreBtn();
+    Notify.info(`На жаль, за вашим запитом нічого не знайдено.`);
   }
 
   lightbox.refresh();
