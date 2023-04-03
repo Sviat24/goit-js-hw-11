@@ -97,7 +97,7 @@ function appendImages(data) {
   const totalPage = Math.ceil(data.totalHits / 40);
   if (apiService.page > totalPage) {
     onHideLoadMoreBtn();
-    Notify.info(`На жаль, ви досягли кінця результатів пошуку.`);
+    Notify.info(`Вітаю! Ви досягли кінця результатів пошуку.`);
   }
 
   if (data.totalHits === 0) {
@@ -142,4 +142,7 @@ function onShowScrollup() {
 
 function onHideScrollup() {
   refs.scrollup.classList.add('is-hidden');
+}
+if (condition) {
+} else {
 }
